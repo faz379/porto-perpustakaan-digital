@@ -103,7 +103,7 @@ class BookController extends Controller
 
     public function update(Request $request, Book $book): RedirectResponse
     {
-        // Admins and book owners can update; authorization via policy
+    // Admins and book owners can update; authorization via policy
         $this->authorize('update', $book);
 
         $this->validate($request, [
@@ -113,7 +113,6 @@ class BookController extends Controller
             'description' => 'required|string',
             'quantity' => 'required|integer',
             'file_path' => 'nullable|file|mimes:pdf',
-            'user_id' => 'required|string',
         ]);
 
         if ($request->hasFile('cover_image')) {
@@ -128,13 +127,13 @@ class BookController extends Controller
             $book->file_path = $filePath->hashName();
         }
 
-        $book->update([
-            'title'         => $request->title,
-            'category_id'   => $request->category_id,
-            'description'   => $request->description,
-            'quantity'      => $request->quantity,
-            'user_id'       => Auth::id(),
-        ]);
+    // Set other attributes and save
+        $book->title = $request->title;
+        $book->category_id = $request->category_id;
+        $book->description = $request->description;
+        $book->quantity = $request->quantity;
+
+        $book->save(); // Ensure you're saving the updated model
 
         return redirect()->route('books.index')->with(['success' => 'Data Berhasil Diupdate!']);
     }
