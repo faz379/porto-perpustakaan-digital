@@ -8,7 +8,7 @@ use App\Exports\BooksExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
 
 Route::group(['middleware' => 'guest'], function () {
@@ -36,4 +36,8 @@ Route::group(['middleware' => 'check.ownership'], function () {
     Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
     Route::get('/export', [BookController::class, 'export'])->name('books.export');
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+
+Route::get('/version', function () {
+    return app()->version();
 });

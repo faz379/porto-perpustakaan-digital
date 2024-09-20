@@ -1,78 +1,78 @@
 {
     "version": 2,
     "builds": [
-      {
-        "src": "public/index.php",
-        "use": "vercel-php@0.6.1"
-      }
+        {
+            "src": "public/index.php",
+            "use": "vercel-php@0.7.0"
+        }
     ],
     "routes": [
-      {
-        "src": "/",
-        "methods": ["GET"],
-        "dest": "/public/index.php"
-      },
-      {
-        "src": "/register",
-        "methods": ["GET"],
-        "dest": "/public/index.php"
-      },
-      {
-        "src": "/login",
-        "methods": ["GET"],
-        "dest": "/public/index.php"
-      },
-      {
-        "src": "/books",
-        "methods": ["GET", "POST"],
-        "dest": "/public/index.php"
-      },
-      {
-        "src": "/books/(.*)",
-        "methods": ["GET", "PUT", "DELETE"],
-        "dest": "/public/index.php"
-      },
-      {
-        "src": "/categories",
-        "methods": ["GET", "POST"],
-        "dest": "/public/index.php"
-      },
-      {
-        "src": "/categories/(.*)",
-        "methods": ["GET", "PUT", "DELETE"],
-        "dest": "/public/index.php"
-      },
-      {
-        "src": "/export",
-        "methods": ["GET"],
-        "dest": "/public/index.php"
-      },
-      {
-        "src": "/logout",
-        "methods": ["DELETE"],
-        "dest": "/public/index.php"
-      }
+        {
+            "src": "/",
+            "methods": ["GET"],
+            "dest": "/public/index.php"
+        },
+        {
+            "src": "/register",
+            "methods": ["GET"],
+            "dest": "/public/index.php"
+        },
+        {
+            "src": "/login",
+            "methods": ["GET"],
+            "dest": "/public/index.php"
+        },
+        {
+            "src": "/books",
+            "methods": ["GET", "POST"],
+            "dest": "/public/index.php"
+        },
+        {
+            "src": "/books/(.*)",
+            "methods": ["GET", "PUT", "DELETE"],
+            "dest": "/public/index.php"
+        },
+        {
+            "src": "/categories",
+            "methods": ["GET", "POST"],
+            "dest": "/public/index.php"
+        },
+        {
+            "src": "/categories/(.*)",
+            "methods": ["GET", "PUT", "DELETE"],
+            "dest": "/public/index.php"
+        },
+        {
+            "src": "/export",
+            "methods": ["GET"],
+            "dest": "/public/index.php"
+        },
+        {
+            "src": "/logout",
+            "methods": ["DELETE"],
+            "dest": "/public/index.php"
+        }
     ],
     "env": {
-      "APP_NAME": "Laravel",
-      "APP_ENV": "public",
-      "APP_KEY": "base64:1bUwBKXkD6/+yDYUPCZPqrTI6uPIlSBVodA2YyYN2yg=",
-      "APP_DEBUG": "true",
-      "APP_URL": "http://localhost",
-      "DB_CONNECTION": "mysql",
-      "DB_HOST": "127.0.0.1",
-      "DB_PORT": "3306",
-      "DB_DATABASE": "perpustakaans",
-      "DB_USERNAME": "root",
-      "DB_PASSWORD": "",
-      "MAIL_MAILER": "smtp",
-      "MAIL_HOST": "mailpit",
-      "MAIL_PORT": "1025",
-      "MAIL_USERNAME": "null",
-      "MAIL_PASSWORD": "null",
-      "MAIL_ENCRYPTION": "null",
-      "MAIL_FROM_ADDRESS": "hello@example.com",
-      "MAIL_FROM_NAME": "${APP_NAME}",
-      "PHP_VERSION": "8.2"
+        "APP_NAME": "Laravel",
+        "APP_ENV": "production",
+        "APP_KEY": "base64:1bUwBKXkD6/+yDYUPCZPqrTI6uPIlSBVodA2YyYN2yg=",
+        "APP_DEBUG": "false",
+        "APP_URL": "http://porto-perpustakaan-digital",
+        "DB_CONNECTION": "mysql",
+        "DB_HOST": "127.0.0.1",
+        "DB_PORT": "3306",
+        "DB_DATABASE": "perpustakaans",
+        "DB_USERNAME": "root",
+        "DB_PASSWORD": "",
+        "MAIL_MAILER": "smtp",
+        "MAIL_HOST": "mailpit",
+        "MAIL_PORT": "1025",
+        "MAIL_USERNAME": "null",
+        "MAIL_PASSWORD": "null",
+        "MAIL_ENCRYPTION": "null",
+        "MAIL_FROM_ADDRESS": "hello@example.com",
+        "MAIL_FROM_NAME": "${APP_NAME}",
+        "PHP_VERSION": "8.2"
     }
 }
