@@ -51,20 +51,28 @@
             "src": "/logout",
             "methods": ["DELETE"],
             "dest": "/public/index.php"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/public/index.php"
         }
     ],
+    "functions": {
+        "api/*.php": {
+            "runtime": "@vercel/php@0.5.1"
+        }
+    },
     "env": {
         "APP_NAME": "Laravel",
         "APP_ENV": "production",
         "APP_KEY": "base64:1bUwBKXkD6/+yDYUPCZPqrTI6uPIlSBVodA2YyYN2yg=",
         "APP_DEBUG": "false",
-        "APP_URL": "http://porto-perpustakaan-digital",
+        "APP_URL": "https://perpustakaan-digital.vercel.app",
         "DB_CONNECTION": "mysql",
-        "DB_HOST": "127.0.0.1",
+        "DB_HOST": "external-database-host",
         "DB_PORT": "3306",
         "DB_DATABASE": "perpustakaans",
-        "DB_USERNAME": "root",
-        "DB_PASSWORD": "",
+        "DB_PASSWORD": "alsya12345",
         "MAIL_MAILER": "smtp",
         "MAIL_HOST": "mailpit",
         "MAIL_PORT": "1025",
