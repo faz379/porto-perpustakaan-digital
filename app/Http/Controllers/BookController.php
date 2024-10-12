@@ -133,7 +133,7 @@ class BookController extends Controller
         $book->description = $request->description;
         $book->quantity = $request->quantity;
 
-        $book->save(); // Ensure you're saving the updated model
+        $book->save();
 
         return redirect()->route('books.index')->with(['success' => 'Data Berhasil Diupdate!']);
     }
