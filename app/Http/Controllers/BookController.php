@@ -19,14 +19,15 @@ class BookController extends Controller
         $this->middleware('check.ownership');
     }
 
-    public function index(Request $request): View
+    public function index (Request $request): View
     {
         $query = Book::query();
-
+    
+        // Filter berdasarkan kategori jika ada
         if ($request->has('category_id') && $request->category_id != '') {
             $query->where('category_id', $request->category_id);
         }
-
+    
         if (Auth::user()->role !== 'admin') {
             $query->where('user_id', Auth::id());
         } else {
@@ -35,8 +36,32 @@ class BookController extends Controller
         
         $books = $query->paginate(5);
         $categories = Category::all();
-
+    
         return view('books.index', compact('books', 'categories'));
+    }
+
+    public function myBooks (Request $request): View
+    {
+        $query = Book::query();
+    
+        // Filter berdasarkan kategori jika ada
+        if ($request->has('category_id') && $request->category_id != '') {
+            $query->where('category_id', $request->category_id);
+        }
+    
+        // Jika bukan admin, ambil semua buku
+        if (Auth::user()->role !== 'admin') {
+            // Biarkan query tetap untuk mengambil semua buku
+            // Jika Anda ingin membatasi tampilan hanya untuk buku yang ditambahkan oleh pengguna tersebut,
+            // Anda bisa menambahkan logika ini.
+            // $query->where('user_id', Auth::id());
+        }
+    
+        // Ambil semua buku sesuai query
+        $books = $query->paginate(5);
+        $categories = Category::all();
+    
+        return view('books.all', compact('books', 'categories'));
     }
 
     public function create(): View

@@ -47,8 +47,8 @@
                 <p>{{ Auth::user()->role === 'admin' ? 'Admin' : Auth::user()->name }}</p>
             @endauth
         </div>
-    
-        <a href="{{ route('books.index') }}">Daftar Buku</a>
+        <a href="{{ route('books.my') }}">Daftar Buku</a>
+        <a href="{{ route('books.index') }}">Daftar Buku Saya</a>
         <a href="{{ route('categories.index') }}">Kategori Buku</a>
     
         <!-- Tombol Logout -->

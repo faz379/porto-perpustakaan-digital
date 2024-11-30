@@ -20,6 +20,7 @@ Route::group(['middleware' => 'guest'], function () {
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('/books', BookController::class)->except(['index']);
+    Route::get('/all', [BookController::class, 'myBooks'])->name('books.my');
     Route::put('/books/{book}', [BookController::class, 'update'])->name('books.update');
     Route::get('books/{book}/edit', [BookController::class, 'edit'])->name('books.edit');
     Route::resource('/categories', CategoryController::class);
@@ -30,6 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::group(['middleware' => 'check.ownership'], function () {
     Route::resource('/books', BookController::class);
+    Route::get('/all', [BookController::class, 'myBooks'])->name('books.my');
     Route::put('/books/{book}', [BookController::class, 'update'])->name('books.update');
     Route::get('books/{book}/edit', [BookController::class, 'edit'])->name('books.edit');
     Route::resource('/categories', CategoryController::class);

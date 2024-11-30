@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Daftar Buku Saya</title>
+    <title>Daftar Buku</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -47,6 +47,7 @@
             <p>{{ Auth::user()->role === 'admin' ? 'Admin' : Auth::user()->name }}</p>
         @endauth
     </div>
+
     <a href="{{ route('books.my') }}">Daftar Buku</a>
     <a href="{{ route('books.index') }}">Daftar Buku Saya</a>
     <a href="{{ route('categories.index') }}">Kategori Buku</a>
@@ -91,7 +92,6 @@
                                 </div>
                             </div>
                         </form>
-                        <a href="{{ route('books.create') }}" class="btn btn-md btn-success mb-3">TAMBAH BUKU</a>
                         <a href="{{ route('books.export') }}" class="btn btn-md btn-success mb-3">EXPORT EXCEL</a>
 
                         <table class="table table-bordered">
@@ -104,7 +104,6 @@
                                     <th scope="col">DESKRIPSI</th>
                                     <th scope="col">JUMLAH</th>
                                     <th scope="col">FILE</th>
-                                    <th scope="col">AKSI</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -117,15 +116,6 @@
                                         <td>{{ $book->description }}</td>
                                         <td>{{ $book->quantity }}</td>
                                         <td><a href="{{ asset('storage/books/files/' . $book->file_path) }}" target="_blank">Download</a></td>
-                                        <td class="text-center">
-                                                <a href="{{ route('books.show', $book->id) }}" class="btn btn-sm btn-warning">SHOW</a>
-                                                <a href="{{ route('books.edit', $book->id) }}" class="btn btn-sm btn-primary">EDIT</a>
-                                                <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('books.destroy', $book->id) }}" method="POST" style="display: inline-block;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger">DELETE</button>
-                                                </form>
-                                        </td>
                                     </tr>
                                 @empty
                                     <tr>
